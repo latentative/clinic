@@ -1,0 +1,28 @@
+.new_patient, .edit_patient, .new_encounter, .edit_encounter {
+
+  input {
+    width:66.67%;
+    display:inline;
+  }
+  label {
+    padding:0 5%;
+    width:23.33%;
+    display:inline-block;
+    text-align: right;
+  }
+
+  input[type="submit"] {
+    display:inline;
+    width: inherit;
+    margin-right:2em;
+  }
+  select {
+    width:10%;
+    display:inline;
+  }
+
+}
+
+a.button:visited {
+  color: #fff;
+}

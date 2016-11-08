@@ -1,0 +1,49 @@
+<%= form_for(patient) do |f| %>
+  <% if patient.errors.any? %>
+<!--    <div>
+      <h2>You have <%= pluralize(patient.errors.count, "error") %> prohibited the patient information from being saved:</h2>-->
+
+      <ul class="alert callout no-bullet">
+      <% patient.errors.full_messages.each do |message| %>
+        <li><h4><i class="fi-alert"></i> <%= message %></h4></li>
+      <% end %>
+      </ul>
+  <!--  </div>-->
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mrn %>
+    <%= f.text_field :mrn %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name, "First Name" %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :middle_name, "Middle Name" %>
+    <%= f.text_field :middle_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name, "Last Name" %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :weight %>
+    <%= f.number_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :height %>
+    <%= f.number_field :height %>
+  </div>
+
+  <div class="text-center">
+    <%= f.submit "Submit", class:"button"%>
+    <%= link_to 'Cancel', patients_path, class:"button" %>
+  </div>
+
+<% end %>

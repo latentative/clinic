@@ -1,0 +1,44 @@
+<% content_for :title, "Encounter Details" %>
+
+<h1>Encounter Details</h1>
+
+<div class="text-right"><%= link_to 'Destroy', @encounter, method: :delete, data: { confirm: 'Are you sure?' }, class:"button" %></div>
+
+<table>
+  <tr>
+    <th class="small-3 text-right">Visit Number</th>
+    <td><%= @encounter.visit_number %></td>
+  </tr>
+  <tr>
+    <th class="small-3 text-right">Admitted At</th>
+    <td><%= l @encounter.admitted_at, format: :concise if @encounter.admitted_at.present?%></td>
+  </tr>
+  <tr>
+    <th class="small-3 text-right">Discharged At</th>
+    <td><%= l @encounter.discharged_at, format: :concise if @encounter.discharged_at.present?  %></td>
+  </tr>
+  <tr>
+    <th class="small-3 text-right">Location</th>
+    <td><%= @encounter.location %></td>
+  </tr>
+  <tr>
+    <th class="small-3 text-right">Room</th>
+    <td><%= @encounter.room %></td>
+  </tr>
+  <tr>
+    <th class="small-3 text-right">Bed</th>
+    <td><%= @encounter.bed %></td>
+  </tr>
+  <tr>
+    <th class="small-3 text-right">Patient ID</th>
+    <td><%= @encounter.patient.id %></td>
+  </tr>
+
+</table>
+
+<h4 id="notice"><%= notice %></h4>
+
+<div class="text-center">
+  <%= link_to 'Edit Encounter', edit_encounter_path(@encounter),class:"button"%>
+  <%= link_to 'Patient Details', @encounter.patient,class:"button" %>
+</div>

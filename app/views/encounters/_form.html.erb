@@ -1,0 +1,70 @@
+<%= form_for(encounter) do |f| %>
+  <% if encounter.errors.any? %>
+        <!--<div id="error_explanation">
+      <h2><%= pluralize(encounter.errors.count, "error") %> prohibited this encounter from being saved:</h2>-->
+
+        <ul class="alert callout no-bullet">
+      <% encounter.errors.full_messages.each do |message| %>
+          <li><h4><i class="fi-alert"></i> <%= message %></h4></li>
+      <% end %>
+      </ul>
+    <!--</div>-->
+  <% end %>
+
+  <div class="field">
+    <%= f.label :visit_number, "Visit Number" %>
+    <%= f.text_field :visit_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admitted_at, "Admitted At" %>
+
+    <%= f.datetime_select :admitted_at ,:include_blank => true%>
+    <select id="encounter_admitted_at_6i" name="encounter[admitted_at(6i)]">
+      <option value=""></option>
+      <% (0..59).each do |i| %>
+      <option value="<%= i.to_s.rjust(2, "0") %>" <%=  (encounter.admitted_at.present? && encounter.admitted_at.sec == i )? 'selected':'' %>>
+        <%= i.to_s.rjust(2, "0") %>
+      </option>
+      <%end %>
+    </select>
+  </div>
+
+  <div class="field">
+    <%= f.label :discharged_at, "Discharged At" %>
+    <%= f.datetime_select :discharged_at,:include_blank => true %>
+    <select id="encounter_discharged_at_6i" name="encounter[discharged_at(6i)]">
+      <option value=""></option>
+      <% (0..59).each do |i| %>
+          <option value="<%= i.to_s.rjust(2, "0") %>" <%= (encounter.discharged_at.present? && encounter.discharged_at.sec == i) ? 'selected':'' %>>
+            <%= i.to_s.rjust(2, "0") %>
+          </option>
+      <%end %>
+    </select>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :room %>
+    <%= f.number_field :room %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bed %>
+    <%= f.number_field :bed %>
+  </div>
+
+  <div class="field">
+    <%= f.label :patient_id, "Patient ID" %>
+    <%= f.text_field :patient_id %>
+  </div>
+
+  <div class="text-center">
+    <%= f.submit "Submit", class:"button"%>
+    <%= link_to 'Patient Details', @encounter.patient, class:"button" %>
+  </div>
+<% end %>
